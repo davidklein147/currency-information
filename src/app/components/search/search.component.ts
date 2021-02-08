@@ -30,8 +30,6 @@ export class SearchComponent implements OnInit, OnChanges {
       this.searchList = a);
       console.log(this.searchList);
     
-      
-      
   }   
   
   

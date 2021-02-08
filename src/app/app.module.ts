@@ -14,7 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 
 const routes:Routes = [
   {path: '', component:HomeComponent},
-  {path: 'all-Cur', component: AllCurComponent}
+  {path: 'all-Cur/: name', component: AllCurComponent}
 ]
 
 @NgModule({

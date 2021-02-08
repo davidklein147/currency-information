@@ -26,22 +26,18 @@ export class ListCurService {
     // const a = undefined;
     if(coin){
       if(this.keepList){
-        debugger;
+        // debugger;
+        this.a = [...this.keepList]
         for (let index = 0; index < coin.length; index++) {
-          const b =  this.keepList.filter(c => c.symbol[index] === coin[index])
-          this.a = [...b];
+          this.a =  this.a.filter(c => c.symbol[index] === coin[index])
           }
-          return of(this.a)
-      
-       // && c.symbol[1] === coin[1] 
-        // && c.symbol[2] === coin[2])
-      // this.searchList.next(a)
-     
-    } }
+          return of(this.a)     
+      } 
+    }
     else if(this.keepList){
       return of (this.keepList);
-    
-    } else {
+    }
+    else {
     return this.httpClient.get<listModel[]>(this.url)
       .pipe(tap(l => this.keepList = l));
     }
