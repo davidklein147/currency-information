@@ -1,0 +1,11 @@
+.d{
+    position: absolute;
+    height: 10px;
+    width: 150px;
+    display: none;
+}
+.box{
+    background-color: darkolivegreen;
+    height: 10px;
+    width: 150px;
+}

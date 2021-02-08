@@ -1,0 +1,19 @@
+<div class="card mb-3" style="max-width: 540px; border: 0px;">
+    <div class="row no-gutters">
+      <ng-container *ngIf = coinData>
+        <div class="col-md-4"  >
+          <img class="align-middle"  [src] = 'coinData.image.large' height="50%" width="100%"  [alt]='coinData.id'>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p  *ngFor = "let type of aryValues" class="card-text ml-3 my-0 px-1 py-0 overflow-hidden"> {{type}}  </p>
+            <!-- <p class="card-text ml-3 my-0 px-1 py-0 overflow-hidden"> $ {{coinData.market_data.current_price.usd}}  </p>
+            <p class="card-text ml-3 my-0 px-1 py-0 overflow-hidden"> eur {{coinData.market_data.current_price.eur}}  </p> -->
+            <p class="card-text"><small class="text-muted"></small></p>
+            <!-- <button (click)=displaying(coinData)> test </button> -->
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  
