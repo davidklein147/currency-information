@@ -14,7 +14,7 @@ export class OneCurComponent implements OnInit {
 
   show :boolean;
   coinData:CoinModel;
-  coinCache: object;
+  coinCache: CoinModel;
   timeOut: any;
   // collapsings:number;
  
@@ -82,10 +82,6 @@ export class OneCurComponent implements OnInit {
                   }
           }
         }
-        
-       
-        
-          
   }
 
   cache(): void{
