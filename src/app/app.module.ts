@@ -11,6 +11,8 @@ import { OneCurComponent } from './components/one-cur/one-cur.component';
 import { from } from 'rxjs';
 import { MoreDataComponent } from './components/more-data/more-data.component';
 import { SearchComponent } from './components/search/search.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes:Routes = [
   {path: '', component:HomeComponent},
@@ -25,13 +27,15 @@ const routes:Routes = [
     AllCurComponent,
     OneCurComponent,
     MoreDataComponent,
-    SearchComponent
+    SearchComponent,
+    ToggleComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

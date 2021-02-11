@@ -1,0 +1,16 @@
+<div class="none show" [ngClass] = {show:show}>
+    <p>
+        <button type="button" class="btn btn-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        update
+        </button>
+    </p>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="card">
+        <div class="card-body">
+            You can collapse this card by clicking Toggle
+        </div>
+        </div>
+    </div>
+</div>
+<button (click) = 'moreToggle()'></button>

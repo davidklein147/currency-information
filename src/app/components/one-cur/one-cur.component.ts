@@ -1,14 +1,15 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, Input, OnInit, ɵMethodFn } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ɵMethodFn } from '@angular/core';
 import { CoinModel, listModel } from 'src/app/models/list.model';
 import { ListCurService } from 'src/app/services/list-cur.service';
+import { ToggleService } from 'src/app/services/toggle.service';
 
 @Component({
   selector: 'app-one-cur',
   templateUrl: './one-cur.component.html',
   styleUrls: ['./one-cur.component.css']
 })
-export class OneCurComponent implements OnInit {
+export class OneCurComponent implements OnInit, OnChanges {
   
   @Input() idCoin:listModel;
   @Input() idIndex:Number;
@@ -17,19 +18,21 @@ export class OneCurComponent implements OnInit {
   coinData:CoinModel;
   coinCache: CoinModel;
   timeOut: any;
+  checked = false;
+
   // collapsings:number;
  
- constructor(private listCurService:ListCurService) { 
+ constructor(private listCurService:ListCurService, private toggleService:ToggleService) { 
    this.show = false;
-  //  this.collapsings = 0;
    
-  //  this.coinData = null;   
+  //  this.collapsings = 0;  
   }
 
-  ngOnInit(): void {
-    // console.log(this.idCoin);
-     
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.a = document.getElementById(`customSwitch${this.idIndex}`)
   }
+
+  ngOnInit(): void { }
 
   showContain(): void {
       if (this.show === false) {
@@ -68,7 +71,6 @@ export class OneCurComponent implements OnInit {
   }
 
   put(coin:any):void{
-
     // debugger;
     this.coinData = {
             id: coin.id, 
@@ -95,10 +97,23 @@ export class OneCurComponent implements OnInit {
     }, 5000);
   }
 
-  log():void{
-    console.log(this.idCoin.id);
-    
+  toggle():void{
+    if (this.checked === false) {
+      this.checked = true;
+      this.add(this.idCoin);
+    } else {
+      this.checked = false;
+      // this.less()
+    }
+    console.log(this.checked);
+  };
+
+  add(idcoin: listModel): void{
+    this.toggleService.addId(idcoin)
   }
+    
+    
+  
 
   
 
