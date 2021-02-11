@@ -13,6 +13,7 @@ export class ListCurService {
   url= "https://api.coingecko.com/api/v3/coins/list";
   url1="https://api.coingecko.com/api/v3/coins/";
 
+  keepAllList: listModel[];
   keepList : listModel[] ;
   a :listModel[];
   searchList: listModel[] // BehaviorSubject<listModel[]> = new BehaviorSubject<listModel[]>([]);
@@ -21,29 +22,45 @@ export class ListCurService {
     
   }
 
-  getList(coin?:string): Observable <listModel[]>{
-    // debugger;
-    // const a = undefined;
-    if(coin){
-      if(this.keepList){
-        // debugger;
-        this.a = [...this.keepList]
-        for (let index = 0; index < coin.length; index++) {
-          this.a =  this.a.filter(c => c.symbol[index] === coin[index])
-          }
-          return of(this.a)     
-      } 
+  getList(searsh?:string): Observable <listModel[]>{
+    if(searsh){
+      if(this.keepAllList){
+        const sea = this.filter(searsh);
+        return of(sea);
+      } else {
+        this.getCoinList().subscribe(res => {
+          this.keepAllList = res;
+          const sea = this.filter(searsh)
+          return of(sea)
+        });
+      }
     }
-    else if(this.keepList){
-      return of (this.keepList);
+    else if(this.keepAllList){
+      return of (this.keepAllList);
     }
     else {
-    return this.httpClient.get<listModel[]>(this.url)
-      .pipe(tap(l => this.keepList = l));
+      return this.httpClient.get<listModel[]>(this.url)
+      .pipe(tap(l =>this.keepAllList = l));
+      // this.getCoinList().subscribe(res => res);
     }
+  }
+
+  getCoinList(): Observable<listModel[]> {
+    return this.httpClient.get<listModel[]>(this.url)
+    .pipe(tap(l =>this.keepAllList = l));
+  }
+
+  filter(searsh:string):listModel[]{
+    this.a = this.keepAllList;
+      for (let index = 0; index < searsh.length; index++) {
+        this.a =  this.a.filter(c => c.symbol[index] === searsh[index])
+        }
+    return this.a;
   }
 
   getCoin(coin:string): Observable <CoinModel>{
     return this.httpClient.get<CoinModel>(`${this.url1}${coin}`)
   }
+
+
 }

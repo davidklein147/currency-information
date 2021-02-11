@@ -26,9 +26,13 @@ export class SearchComponent implements OnInit, OnChanges {
 
   log(coin:string): void{
     console.log(this.search);
-    this.listCurServise.getList(coin).subscribe(a=>
-      this.searchList = a);
+    // debugger;
+    this.listCurServise.getList(coin).subscribe(a=>{
+      this.searchList = a;
       console.log(this.searchList);
+    });
+      
+      
     
   }   
   

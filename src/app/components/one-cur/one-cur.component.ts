@@ -11,6 +11,7 @@ import { ListCurService } from 'src/app/services/list-cur.service';
 export class OneCurComponent implements OnInit {
   
   @Input() idCoin:listModel;
+  @Input() idIndex:Number;
 
   show :boolean;
   coinData:CoinModel;

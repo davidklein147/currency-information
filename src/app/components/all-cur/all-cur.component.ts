@@ -18,16 +18,28 @@ export class AllCurComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.activatedRoute.paramMap.subscribe(co =>{
-    //   const coins = co.get('name'); 
-      this.getLists();
-    // })     
+    // debugger;
+    this.activatedRoute.paramMap.subscribe(co =>{
+      const coins = co.get('name');
+      // debugger;
+      if(coins){
+        this.listCurService.getList(coins).subscribe(a=>{
+          this.curList = a; 
+          this.arySize = [...this.curList]//.splice(767, 50);
+          console.log(this.curList); 
+        })
+      } else {
+        this.getLists();
+      }
+    })   
+    // this.getLists();  
   }
 
-  getLists(coin?: string): void {
-    this.listCurService.getList().subscribe(a=>{
+  getLists(): void {
+    // debugger
+    this.listCurService.getList().subscribe(a =>{
       this.curList = a; 
-      this.arySize = this.curList.splice(767, 50);
+      this.arySize = [...this.curList].splice(767, 50);
       console.log(this.curList); 
     })
   }
