@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ɵMethodFn } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter, ɵMethodFn } from '@angular/core';
+
 import { CoinModel, listModel } from 'src/app/models/list.model';
 import { ListCurService } from 'src/app/services/list-cur.service';
 import { ToggleService } from 'src/app/services/toggle.service';
@@ -13,31 +14,34 @@ export class OneCurComponent implements OnInit, OnChanges {
 
   @Input() idCoin: listModel;
   @Input() idIndex: Number;
+  @Input() statusOrdaly: boolean;
+  @Output() moreCoin: EventEmitter<listModel> = new EventEmitter<listModel>();
 
   show: boolean;
   coinData: CoinModel;
   coinCache: CoinModel;
   timeOut: any;
-  checked = false;
   toggleList: listModel[];
+  checked = false;
+  SIZE: number;
+  disable: boolean = false;
 
-  // collapsings:number;
 
   constructor(private listCurService: ListCurService, private toggleService: ToggleService) {
     this.show = false;
     
-
-    
-    //  this.collapsings = 0;  
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.disabled();
+    // this.setting();
     // this.a = document.getElementById(`customSwitch${this.idIndex}`)
   }
 
   ngOnInit(): void {
     this.setting();
-   }
+    this.SIZE = this.toggleService.SIZE;
+  }
 
   showContain(): void {
     if (this.show === false) {
@@ -101,28 +105,39 @@ export class OneCurComponent implements OnInit, OnChanges {
 
   toggle(): void {
     if (this.checked === false) {
-      this.checked = true;
-      this.add(this.idCoin);
+      if (this.toggleList.length < this.SIZE) {
+        this.checked = true;
+        this.add(this.idCoin);
+      } else {
+        if (this.statusOrdaly) {
+          this.checked = false;
+          this.moreCoin.emit(this.idCoin);
+        }
+      }
     } else {
       this.checked = false;
       this.cut(this.idCoin);
-      // this.less()
     }
     // console.log(this.checked);
-  };
+  }
+
+  disabled(): void{
+    this.disable = !this.statusOrdaly;
+    // this.setting();
+  }
 
   add(idcoin: listModel): void {
     this.toggleService.addId(idcoin)
   }
 
-  cut (idCoin: listModel){
+  cut(idCoin: listModel) {
     this.toggleService.cutId(idCoin);
   }
 
-  setting(): void{
+  setting(): void {
     this.toggleService.chenchId().subscribe(res => {
       this.toggleList = res;
-      if(this.toggleList.find(tog => tog === this.idCoin)){
+      if (this.toggleList.find(tog => tog === this.idCoin)) {
         this.checked = true;
       }
     })

@@ -10,7 +10,7 @@ export class ToggleService {
   listToggle: BehaviorSubject<listModel[]>;
   _listToggle: listModel[] = [];
   more = false;
-  SIZE = 2;
+  SIZE = 1;
   moreThenSize: listModel;
   // ifMore:Observable <boolean>;
   private _myBool: boolean
@@ -63,8 +63,8 @@ export class ToggleService {
     this._listToggle = [...this._listToggle]
     this.listToggle.next(this._listToggle);
 
-    // console.log(this.listToggle.value.length);
-    // console.log(this.listToggle.value);
+    console.log(this.listToggle.value.length);
+    console.log(this.listToggle.value);
   }
 
   chenchId(): Observable<listModel[]> {

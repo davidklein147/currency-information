@@ -1,13 +1,14 @@
 .parallax {
     /* The image used */
-    background-image: "angular/currency-information/src/assets/הורדה.jpg";
+    background-image: url("C:/Users/aaron/Desktop/david/david1/anguler/Currency-information/src/assets/background-cryptocurrency-bitcoin-dollar-bill-candlestick-chart-graph-mobile-phone-stock-market-concept-golden-142334515.jpg") ;
   
     /* Set a specific height */
-    min-height: 500px; 
+    min-height: 300px; 
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 10px;
   }

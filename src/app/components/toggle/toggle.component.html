@@ -1,20 +1,47 @@
-<div class="none show" [ngClass] = {show:show}>
-    <p>
-        <button type="button" class="btn btn-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
-        aria-controls="collapseExample">
-        update
-        </button>
-    </p>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-        <div class="card">
-        <div class="card-body">
-            You can collapse this card by clicking Toggle
-        </div>
+<div class="none show" [ngClass]={show:show}>
+    <div class="position-plos">
+        <div class="position">
+            <div *ngIf='isCollapsed'>
+                <div>
+                    <h2>yau can selcte only {{SIZE}} coins!</h2>
+                    <br>
+                    presse update to chngeing whit one of coin or cancel to canceled
+                </div>
+                <br>
+                <p>
+                    <button type="button" class="btn btn-primary" (click)="collapse.toggle()">
+                        update
+                    </button>
+                    <button type="button" class="btn btn-primary mx-2" (click)="chengeShow(moreCoin)">
+                        cancel
+                    </button>
+                </p>
+            </div>
+            <div class="positions" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <div class="card mt-2">
+                    <div class="card-body ">
+                        select one coin or more to remove
+                        <br>
+                        <div class="row">
+                            <div class="col custom-control custom-switch ml-2" *ngFor="let id of listToggles">
+                                <input type="checkbox" class="custom-control-input" [id]='id.symbol' checked='true'
+                                    (click)='chengeing(id)'>
+                                <label class="custom-control-label" [for]='id.symbol'> {{id.symbol}} </label>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary m-2" (click)="collapse.toggle()" (click)='done(moreCoin)'>Done</button>
+                        <button type="button" class="btn btn-primary mx-2" (click)="collapse.toggle()" (click)="chengeShow(moreCoin)">
+                            cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<button (click) = 'chengeShow()' (click) = 'listToggle()'></button>
-<p>You can pass an existing component as content of the modal window. In this case remember to add content component
+<!-- <button (click) = 'chengeShow()' (click) = 'listToggle()'></button> -->
+<!-- <p>You can pass an existing component as content of the modal window. In this case remember to add content component
     as an <code>entryComponents</code> section of your <code>NgModule</code>.</p>
     
-    <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
+    <button class=" btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
