@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { listModel } from 'src/app/models/list.model';
 import { ToggleService } from 'src/app/services/toggle.service';
 
@@ -10,33 +11,55 @@ import { ToggleService } from 'src/app/services/toggle.service';
 export class ToggleComponent implements OnInit, OnChanges {
   isCollapsed = true;
   show: boolean;
-  moreList: listModel[] = [];
+  moreList: listModel[];
+  SIZE:number;
+  moreThenSize : boolean;
 
-  constructor(private toggleservice: ToggleService) {
+  constructor(private toggleservice: ToggleService, private d: NgbModal) {
     this.show = false;
+    this.SIZE = this.toggleservice.SIZE;
+    
+
+
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-
+  ngOnChanges(): void {
+    // this.moreThenSize = this.toggleservice.ifMore();
+    this.moreToggle()
 
   }
 
   ngOnInit(): void {
-
+    this.listToggle();
+    // this.moreThenSize = this.toggleservice.moreThenSize;
+  }
+  open() {
+    const modalRef = this.d.open(this.d);
+    modalRef.componentInstance.name = 'World';
   }
 
-  moreToggle(): void {
+  listToggle(): void {
     this.toggleservice.chenchId().subscribe(res => {
       this.moreList = res;
       console.log(this.moreList);
-      if (this.moreList.length > 1) {
-        this.chengeShow();
-      }
     })
   }
 
+  getStatus(): void {
+    this.toggleservice.boolSubject.subscribe((newBool: boolean) => { this.moreThenSize = newBool; 
+      console.log('more then 2');
+      
+      this.chengeShow();
+    });
+  }
+  moreToggle(): void {
+    if (this.moreThenSize) {
+      this.chengeShow();
+    }
+  }
+
   chengeShow(): void {
-    this.show = true;
+    this.show = !this.show? true : false;   
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { listModel } from 'src/app/models/list.model';
 import { ListCurService } from 'src/app/services/list-cur.service';
+import { ToggleService } from 'src/app/services/toggle.service';
 
 @Component({
   selector: 'app-all-cur',
@@ -13,7 +14,7 @@ export class AllCurComponent implements OnInit {
   curList:listModel[];
   arySize:listModel[];
 
-  constructor(private listCurService:ListCurService, private activatedRoute: ActivatedRoute) { 
+  constructor(private listCurService:ListCurService, private activatedRoute: ActivatedRoute, private toggleService: ToggleService) { 
     this.curList = [];
   }
 

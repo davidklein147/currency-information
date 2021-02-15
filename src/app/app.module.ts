@@ -13,6 +13,7 @@ import { MoreDataComponent } from './components/more-data/more-data.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpringWindowComponent } from './components/spring-window/spring-window.component';
 
 const routes:Routes = [
   {path: '', component:HomeComponent},
@@ -28,7 +29,8 @@ const routes:Routes = [
     OneCurComponent,
     MoreDataComponent,
     SearchComponent,
-    ToggleComponent
+    ToggleComponent,
+    SpringWindowComponent
   ],
   imports: [
     BrowserModule,
