@@ -1,18 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light  ml-0" >
-    <div >
-      <div class=" form-inline my-2 my-lg-0" >
-        <input [(ngModel)]= "search" class="form-control mr-sm-2" type="search"  placeholder="search"  >
-          <div class="nav-item dropdown">
-<!--          
+<nav class="navbar navbar-expand-lg navbar-light  ml-0">
+  <div>
+    <div class=" form-inline my-2 my-lg-0 col">
+      <input [(ngModel)]="search" class="form-control mr-sm-2" type="search" placeholder="search">
+      <!-- <div class="nav-item dropdown">
+                 
           <div class="dropdown-menu" >
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
            
-          </div> -->
-        </div>
-        <button *ngIf = 'search' (click)= 'log(search)' [routerLink]="['all-Cur',search]" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-      </div>
+          </div>
+      </div> -->
+      <button *ngIf='search' (click)='log(search)' [routerLink]="['all-Cur',search]"
+        class=" btn btn-primary my-2 my-sm-0" type="submit">Search</button>
     </div>
-  </nav>
-  <!-- <router-outlet></router-outlet> -->
-
+  </div>
+</nav>
+<!-- <router-outlet></router-outlet> -->

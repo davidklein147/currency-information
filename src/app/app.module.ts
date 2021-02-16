@@ -14,11 +14,13 @@ import { SearchComponent } from './components/search/search.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpringWindowComponent } from './components/spring-window/spring-window.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes:Routes = [
-  {path: '', component:HomeComponent},
-  {path:'all-Cur', component: AllCurComponent},
-  {path: 'all-Cur/:name', component: AllCurComponent}
+  {path: 'home', component:HomeComponent},
+  {path:'', component: AllCurComponent},
+  {path: 'all-Cur/:name', component: AllCurComponent},
+  {path: 'about', component: AboutComponent}
 ]
 
 @NgModule({
@@ -30,7 +32,8 @@ const routes:Routes = [
     MoreDataComponent,
     SearchComponent,
     ToggleComponent,
-    SpringWindowComponent
+    SpringWindowComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

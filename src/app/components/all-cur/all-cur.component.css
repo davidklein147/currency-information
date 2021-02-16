@@ -1,6 +1,42 @@
-.parallax {
+
+@media only screen and (min-width:540px){
+  .parallax {
     /* The image used */
-    background-image: url("C:/Users/aaron/Desktop/david/david1/anguler/Currency-information/src/assets/background-cryptocurrency-bitcoin-dollar-bill-candlestick-chart-graph-mobile-phone-stock-market-concept-golden-142334515.jpg") ;
+    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
+  
+    /* Set a specific height */
+    min-height: 150px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .parallax {
+    /* The image used */
+    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
+  
+    /* Set a specific height */
+    min-height: 200px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width:960px) {
+  .parallax {
+    /* The image used */
+    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
   
     /* Set a specific height */
     min-height: 300px; 
@@ -12,3 +48,5 @@
     background-size: cover;
     margin-bottom: 10px;
   }
+}
+  

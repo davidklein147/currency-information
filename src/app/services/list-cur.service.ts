@@ -28,6 +28,7 @@ export class ListCurService {
         const sea = this.filter(searsh);
         return of(sea);
       } else {
+        
         this.getCoinList().subscribe(res => {
           this.keepAllList = res;
           const sea = this.filter(searsh)

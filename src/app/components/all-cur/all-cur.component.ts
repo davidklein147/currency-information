@@ -45,13 +45,13 @@ export class AllCurComponent implements OnInit {
     // debugger
     this.listCurService.getList().subscribe(a => {
       this.curList = a;
-      this.arySize = [...this.curList].splice(767, 50);
+      this.arySize = [...this.curList]//.splice(767, 50);
       console.log(this.curList);
     })
   }
 
   updateToggle(coin: listModel): void {
-    this.moreCoin = coin;
+    this.moreCoin = {...coin};
   }
 
   updateOrdaly(statusOrdaly: boolean): void {

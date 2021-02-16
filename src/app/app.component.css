@@ -3,6 +3,14 @@
     background-color: aqua;
     background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\imagesa.jpeg) ;
     width: 100%;
-    color: rgb(2, 2, 2);
+    color: rgb(250, 249, 249);
     /* height: 100px; */
 }
+
+.crypto{
+    color: rgb(243, 204, 77);   
+}
+
+.blue{
+    background-color: rgb(183, 206, 248);
+  }

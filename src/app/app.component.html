@@ -1,13 +1,38 @@
 <header class="container">
   <div class="bak">
-  
-  <div class="row font-weight-bold " style="font-size: 2em;">
-    <div class="col-3 col-md-3" [routerLink]= '["/"]'> home </div>
-    <div class="col-3 col-md-3" [routerLink]= '["/all-Cur"]'> all currencies </div>
-    <div class="col-2"></div>
-    <app-search class="col-4"></app-search>
+   
+    <div class="d-none d-lg-block">
+      <div class="m-2 crypto align-middle">
+        <span style="float: left; width: 85%; font-size: 2.5em;" class="align-middle">cryptocurrency informetion</span>
+        <img src="assets\imagesb.jpeg" alt style="height: 100%; width: 15%; border-radius: 5px;">
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row font-weight-bold " style="font-size:medium;">
+            <!-- <div class="col m-2" [routerLink]='["/"]'> home </div> -->
+            <div class="col m-2" [routerLink]='["/"]'> all currencies </div>
+            <div class="col m-2" [routerLink]='["/about"]'> about </div>
+          </div>
+        </div>
+        <div class="col-2"></div>
+        <app-search class="col-4 px-0"></app-search>
+      </div>
+    </div>
+
+    <div class="d-md-block d-lg-none">
+      <div class="m-2 crypto align-middle">
+        <span style="float: left; width: 85%; font-size: large;" class="align-middle">cryptocurrency informetion</span>
+        <img src="assets\imagesb.jpeg" alt style="height: 100%; width: 15%; border-radius: 5px;">
+      </div>
+      <div class="row  " style="font-size:medium;">
+        <!-- <div class="col-5 m-2" [routerLink]='["/"]'> home </div> -->
+        <div class="col-5 m-2" [routerLink]='["/"]'> all currencies </div>
+        <div class="col-5 m-2" [routerLink]='["/about"]'> about </div>
+        <app-search class="col px-0"></app-search>
+      </div>
+    </div>
+
+
   </div>
-</div>
 </header>
 <router-outlet></router-outlet>
-

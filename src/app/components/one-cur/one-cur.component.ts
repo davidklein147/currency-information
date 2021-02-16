@@ -34,6 +34,7 @@ export class OneCurComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.disabled();
+    
     // this.setting();
     // this.a = document.getElementById(`customSwitch${this.idIndex}`)
   }
@@ -110,7 +111,7 @@ export class OneCurComponent implements OnInit, OnChanges {
         this.add(this.idCoin);
       } else {
         if (this.statusOrdaly) {
-          this.checked = false;
+          this.checked = true;
           this.moreCoin.emit(this.idCoin);
         }
       }
@@ -135,6 +136,7 @@ export class OneCurComponent implements OnInit, OnChanges {
   }
 
   setting(): void {
+    
     this.toggleService.chenchId().subscribe(res => {
       this.toggleList = res;
       if (this.toggleList.find(tog => tog === this.idCoin)) {

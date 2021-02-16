@@ -21,14 +21,12 @@ export class ToggleComponent implements OnInit, OnChanges {
     this.show = false;
     this.SIZE = this.toggleservice.SIZE;
     this.ordaly = new EventEmitter<boolean>(true);
-   
   }
 
   ngOnChanges(): void {
     // this.moreThenSize = this.toggleservice.ifMore();
     // this.moreToggle()
-    this.chengeShow()
-    
+    this.chengeShow() 
   }
 
   ngOnInit(): void {
@@ -63,8 +61,9 @@ export class ToggleComponent implements OnInit, OnChanges {
   // }
 
   chengeShow(id?:listModel): void {
+    // debugger
     if(id){
-      delete this.moreCoin
+      console.log(this.moreCoin);
       this.show = false;
       this.ordaly.emit(true);
     }
@@ -79,6 +78,8 @@ export class ToggleComponent implements OnInit, OnChanges {
       }
       
     }
+    console.log(this.moreCoin);
+    
     // this.show = !this.show ? true : false;
   }
 
