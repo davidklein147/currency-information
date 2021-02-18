@@ -1,7 +1,7 @@
 .bak{
     /* background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\הורדה.jpg); */
     background-color: aqua;
-    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\imagesa.jpeg) ;
+    background-image: url('src/assets/imagesa.jpeg') ;
     width: 100%;
     color: rgb(250, 249, 249);
     /* height: 100px; */

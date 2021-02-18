@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CoinModel } from 'src/app/models/list.model';
 
@@ -35,7 +36,9 @@ export class MoreDataComponent implements OnInit, OnChanges, OnDestroy {
   displaying(coin: CoinModel): void {
     while (this.aryValues.length < 3) {
       for (const[key, value] of Object.entries(coin.market_data.current_price)) {
-        var a = (`${key} ${value}`);
+        var b = new CurrencyPipe("ILS")
+        var c = b.transform(value)
+        var a = (`${c} ${value}`);
         this.aryValues.push(a)
       } 
     }

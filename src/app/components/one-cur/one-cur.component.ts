@@ -111,7 +111,7 @@ export class OneCurComponent implements OnInit, OnChanges {
         this.add(this.idCoin);
       } else {
         if (this.statusOrdaly) {
-          this.checked = true;
+          this.checked =undefined;
           this.moreCoin.emit(this.idCoin);
         }
       }
