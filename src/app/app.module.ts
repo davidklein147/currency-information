@@ -15,9 +15,11 @@ import { ToggleComponent } from './components/toggle/toggle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpringWindowComponent } from './components/spring-window/spring-window.component';
 import { AboutComponent } from './components/about/about.component';
+import { CurrencyPipe } from '@angular/common';
+import { HomeGuard } from './guards/home.guard';
 
 const routes:Routes = [
-  {path: 'home', component:HomeComponent},
+  {path: 'home', component:HomeComponent, canActivate:[HomeGuard]},
   {path:'', component: AllCurComponent},
   {path: 'all-Cur/:name', component: AllCurComponent},
   {path: 'about', component: AboutComponent}
@@ -33,7 +35,9 @@ const routes:Routes = [
     SearchComponent,
     ToggleComponent,
     SpringWindowComponent,
-    AboutComponent
+    AboutComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

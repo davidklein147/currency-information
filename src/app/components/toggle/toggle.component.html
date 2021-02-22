@@ -1,4 +1,4 @@
-<div class="none show" [ngClass]={show:show}>
+<div class="none show" [ngClass]={show:shows()}>
     <div class="position-plos">
         <div class="position">
             <div *ngIf='isCollapsed'>
@@ -12,7 +12,7 @@
                     <button type="button" class="btn btn-primary" (click)="collapse.toggle()">
                         update
                     </button>
-                    <button type="button" class="btn btn-primary mx-2" (click)="chengeShow(moreCoin)">
+                    <button type="button" class="btn btn-primary mx-2" (click)="chengeShows()">
                         cancel
                     </button>
                 </p>
@@ -24,16 +24,16 @@
                         <br>
                         <div class="row">
                             <div class="col custom-control custom-switch ml-2" *ngFor="let id of listToggles">
-                                <input type="checkbox" class="custom-control-input" [id]='id.symbol' checked='true'
-                                    (click)='chengeing(id)'>
+                                <input type="checkbox" name="id.symbol" class="custom-control-input" [id]='id.symbol'
+                                    [checked]='true' (click)='chengeing(id)'>
                                 <label class="custom-control-label" [for]='id.symbol'> {{id.symbol}} </label>
                             </div>
                         </div>
 
                         <button type="button" class="btn btn-primary m-2" (click)="collapse.toggle()"
-                            (click)='done(moreCoin)'>Done</button>
+                            (click)='done()'>Done</button>
                         <button type="button" class="btn btn-primary mx-2" (click)="collapse.toggle()"
-                            (click)="chengeShow(moreCoin)">
+                            (click)="chengeShows()">
                             cancel
                         </button>
                     </div>

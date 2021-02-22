@@ -24,23 +24,30 @@ export class OneCurComponent implements OnInit, OnChanges {
   toggleList: listModel[];
   checked = false;
   SIZE: number;
-  disable: boolean = false;
+  // disable: boolean = this.toggleService.ordaly;
+  a: any;
 
 
   constructor(private listCurService: ListCurService, private toggleService: ToggleService) {
     this.show = false;
-    
+    this.a = document.getElementById(`customSwitch${this.idIndex}`);
+
+  }
+
+  ngAfterViewInit() {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.disabled();
-    
-    // this.setting();
-    // this.a = document.getElementById(`customSwitch${this.idIndex}`)
+    // this.disabled();
+
+    this.setting();
+
   }
 
   ngOnInit(): void {
     this.setting();
+    this.settingList();
     this.SIZE = this.toggleService.SIZE;
   }
 
@@ -59,15 +66,14 @@ export class OneCurComponent implements OnInit, OnChanges {
       if (this.timeOut) {
         this.clear();
       }
+      //  this.coinData = this.coinCache;
       this.put(this.coinCache);
-      // this.coinData = {...this.coinCache};
-      // console.log(this.coinData);
-      console.log("cache " + this.coinData, this.coinCache);
+      // console.log("cache " + this.coinData, this.coinCache);
     } else {
-      console.log("servise " + this.coinData, this.coinCache);
-      this.listCurService.getCoin(coin).subscribe(c => {
+      // console.log("servise " + this.coinData, this.coinCache);
+      this.listCurService.getCoin(coin).subscribe((c: CoinModel) => {
         this.coinCache = c;
-        // this.coinData = {...this.coinCache};
+        // this.coinData = this.coinCache;
         this.put(this.coinCache);
       })
     }
@@ -101,51 +107,28 @@ export class OneCurComponent implements OnInit, OnChanges {
     this.timeOut = setTimeout(() => {
       this.coinCache = undefined;
       console.log(this.coinCache);
-    }, 5000);
+    }, 2 * 60 * 1000);
   }
 
   toggle(): void {
-    if (this.checked === false) {
-      if (this.toggleList.length < this.SIZE) {
-        this.checked = true;
-        this.add(this.idCoin);
-      } else {
-        if (this.statusOrdaly) {
-          this.checked = true;
-          this.moreCoin.emit(this.idCoin);
-        }
-      }
-    } else {
-      this.checked = false;
-      this.cut(this.idCoin);
-    }
-    // console.log(this.checked);
+    this.toggleService.toggle(this.idCoin);
+    this.moreCoin.emit(this.idCoin);
   }
 
-  disabled(): void{
-    this.disable = !this.statusOrdaly;
-    // this.setting();
-  }
-
-  add(idcoin: listModel): void {
-    this.toggleService.addId(idcoin)
-  }
-
-  cut(idCoin: listModel) {
-    this.toggleService.cutId(idCoin);
-  }
-
-  setting(): void {
-    
+  settingList(): void {
     this.toggleService.chenchId().subscribe(res => {
       this.toggleList = res;
-      if (this.toggleList.find(tog => tog === this.idCoin)) {
-        this.checked = true;
-      }
     })
   }
 
+  setting(): boolean {
+    return this.toggleService.setting(this.idCoin);
 
+  }
+
+  disable(): boolean {
+    return !this.toggleService.ordaly;
+  }
 
 
 

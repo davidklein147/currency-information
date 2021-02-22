@@ -9,48 +9,51 @@ export class ToggleService {
 
   listToggle: BehaviorSubject<listModel[]>;
   _listToggle: listModel[] = [];
-  more = false;
-  SIZE = 1;
+  find: listModel = {
+    id: "",
+    symbol: "",
+    name: ""
+  }
+  SIZE = 2;
   moreThenSize: listModel;
-  // ifMore:Observable <boolean>;
-  private _myBool: boolean
+  ordaly = true;
+
+
   constructor() {
     this.listToggle = new BehaviorSubject<listModel[]>(this._listToggle)
-    this.boolSubject = new Subject<boolean>();
-    this.myBool$ = this.boolSubject.asObservable();
+
+  }
+
+  setting(idCoin: listModel):  boolean {
+    if (!this._listToggle) {
+      return false
+    } else {
+      const t = this._listToggle.findIndex(tog => tog === idCoin)
+      return t > -1 ? true : false;
+    }
+  }
+
+  toggle(idCoin: listModel): void {
+    debugger;
+    this.find = this._listToggle.find(find => find.id === idCoin.id)
+    console.log(this.find);
+    if (this.find !== idCoin) {
+      if (this._listToggle.length < this.SIZE) {
+        this.addId(idCoin);
+        this.ordaly = true;
+      } else {
+        this.ordaly = false;
+      }
+    } else {
+      this.cutId(idCoin);
+    }
   }
 
   addId(id: listModel): void {
-    if (this.listToggle.value.length < this.SIZE) {
-      this._listToggle.push(id);// = [...this._listToggle, id];
-      this.update();
-      //this.listToggle.next(this._listToggle);
-      // this.more = true;
-    } else {
-      this.moreThenSize = id;
-      this.myBool = true;
-      console.log(this.moreThenSize);
-
-      // debugger
-      // this._listToggle.splice(1,1,id);
-      // this._listToggle = [...this._listToggle]
-      // this.listToggle.next(this._listToggle);
-    }
-    // console.log(this.listToggle.value.length);
-    // console.log(this.listToggle.value);
+    this._listToggle.push(id);
+    this.update();
   }
 
-  // ifMore():Observable <boolean> {
-  //   return this.moreThenSize? true : false;
-  // }
-  myBool$: Observable<boolean>;
-
-  public boolSubject: Subject<boolean>;
-
-  set myBool(newValue) {
-    this._myBool = newValue;    
-    this.boolSubject.next(newValue);
-  }
   cutId(id: listModel): void {
     const index = this._listToggle.findIndex(find => find === id);
     if (index > -1) {

@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CoinModel } from 'src/app/models/list.model';
 
@@ -12,7 +13,8 @@ export class MoreDataComponent implements OnInit, OnChanges, OnDestroy {
 
   aryValues: string[]= [];
 
-  constructor() { }
+  
+  constructor( ) { }
 
   ngOnDestroy(): void {
     this.coinData =null;
@@ -33,8 +35,10 @@ export class MoreDataComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   displaying(coin: CoinModel): void {
+    
     while (this.aryValues.length < 3) {
-      for (const[key, value] of Object.entries(coin.market_data.current_price)) {
+      for (const[key, value] of Object.entries(this.coinData.market_data.current_price)) {
+      //  var a = this.currencyPipe.transform(value,key)
         var a = (`${key} ${value}`);
         this.aryValues.push(a)
       } 
