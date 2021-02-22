@@ -2,7 +2,7 @@
 @media only screen and (min-width:540px){
   .parallax {
     /* The image used */
-    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
+    background-image: url('src/assets/820-bitcoin-magic-TILE.jpg') ;
   
     /* Set a specific height */
     min-height: 150px; 
@@ -19,7 +19,7 @@
 @media only screen and (min-width:768px){
   .parallax {
     /* The image used */
-    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
+    background-image: url('src/assets/820-bitcoin-magic-TILE.jpg') ;
   
     /* Set a specific height */
     min-height: 200px; 
@@ -36,7 +36,7 @@
 @media only screen and (min-width:960px) {
   .parallax {
     /* The image used */
-    background-image: url(C:\Users\aaron\Desktop\david\david1\anguler\Currency-information\src\assets\820-bitcoin-magic-TILE.jpg) ;
+    background-image: url('src/assets/820-bitcoin-magic-TILE.jpg') ;
   
     /* Set a specific height */
     min-height: 1000px; 
