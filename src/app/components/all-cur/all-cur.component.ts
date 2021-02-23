@@ -75,7 +75,7 @@ export class AllCurComponent implements OnInit {
   }
 
   updateToggle(coin: listModel): void {
-    this.moreCoin = { ...coin };
+    this.moreCoin = coin;
   }
 
   updateOrdaly(statusOrdaly: boolean): void {

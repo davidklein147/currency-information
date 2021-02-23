@@ -29,15 +29,15 @@ export class ToggleService {
       return false
     } else {
       const t = this._listToggle.findIndex(tog => tog === idCoin)
-      return t > -1 ? true : false;
+      return t > -1 ? true : undefined;
     }
   }
 
   toggle(idCoin: listModel): void {
     debugger;
-    this.find = this._listToggle.find(find => find.id === idCoin.id)
+    this.find = this._listToggle.find(find => find === idCoin)
     console.log(this.find);
-    if (this.find !== idCoin) {
+    if (this.find!== idCoin) {
       if (this._listToggle.length < this.SIZE) {
         this.addId(idCoin);
         this.ordaly = true;
@@ -47,6 +47,7 @@ export class ToggleService {
     } else {
       this.cutId(idCoin);
     }
+    
   }
 
   addId(id: listModel): void {
