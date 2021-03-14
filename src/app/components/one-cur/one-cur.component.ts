@@ -73,8 +73,8 @@ export class OneCurComponent implements OnInit, OnChanges {
       // console.log("servise " + this.coinData, this.coinCache);
       this.listCurService.getCoin(coin).subscribe((c: CoinModel) => {
         this.coinCache = c;
-        // this.coinData = this.coinCache;
-        this.put(this.coinCache);
+        this.coinData = this.coinCache;
+        //this.put(this.coinCache);
       })
     }
   }
